@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using FluentAssertions;
 using NUnit.Framework;
 using Processing.Core.Interfaces.Importers;
@@ -8,11 +7,8 @@ using Processing.Core.Services.Importers;
 
 namespace Processing.UnitTests;
 
-public class ImportTest
+public class ImportTest : BaseTest
 {
-	private string? _directoryName;
-	private string DirectoryName => _directoryName ??= Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Source");
-	
 	[TestCase("example.csv")]
 	[TestCase("example.xml")]
 	public void Import_Imported(string fileName)
