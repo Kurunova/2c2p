@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Processing.Web.Models.TransactionModel>
+@{
+    ViewData["Title"] = "Transactions Page";
+}
+
+<div class="text-center">
+    <table class="tbl">
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Currency code</th>
+            <th>Status</th>
+            <th>Transaction date</th>
+        </tr>
+        @if (Model.Any())
+        {
+            foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.TransactionId</td>
+                    <td>@transaction.Amount @transaction.CurrencyCode</td>
+                    <td>@transaction.Status</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No data</td>
+            </tr>
+        }
+    </table>
+</div>

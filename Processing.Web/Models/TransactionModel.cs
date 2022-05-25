@@ -1,10 +1,8 @@
-﻿namespace Processing.Core.Entities;
+﻿namespace Processing.Web.Models;
 
-public class Transaction : IEntity
+public class TransactionModel
 {
-	public long Id { get; set; }
-	
-	public string TransactionId { get; set; }
+	public string TransactionId { get; set; } 
 	
 	public decimal Amount { get; set; }
 

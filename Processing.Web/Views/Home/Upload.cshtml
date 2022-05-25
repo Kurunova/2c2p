@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Upload Page";
+}
+
+<div class="text-center">
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype="multipart/form-data", id = "UploadForm" }))
+    {
+        <input type="file" name="file"/>
+        <input type="submit" />
+    }
+    @ViewData["Message"]
+</div>
