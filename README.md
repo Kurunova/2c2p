@@ -8,6 +8,12 @@
 
 Service to upload transaction data from files of various formats into database and query transactions by specified criteria.
 
+## Getting started
+
+```
+docker-compose -p 2c2p up -d processing_db
+```
+
 ## Data 
 
 Supported two formats xml and csv.

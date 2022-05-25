@@ -1,6 +1,7 @@
-﻿using Processing.Core.Importer.Enums;
+﻿using Processing.Importer.Enums;
+using Processing.Importer.Interfaces;
 
-namespace Processing.Core.Importer.Entities;
+namespace Processing.Importer.Entities;
 
 public class XmlTransaction : IImporterResponse
 {

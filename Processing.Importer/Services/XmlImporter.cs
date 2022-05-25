@@ -1,12 +1,10 @@
 ﻿using System.Globalization;
-using System.Xml;
 using System.Xml.Serialization;
-using Processing.Core.Enums;
-using Processing.Core.Importer.Entities;
-using Processing.Core.Importer.Enums;
-using Processing.Core.Importer.Interfaces;
+using Processing.Importer.Entities;
+using Processing.Importer.Enums;
+using Processing.Importer.Interfaces;
 
-namespace Processing.Core.Importer.Services;
+namespace Processing.Importer.Services;
 
 public class XmlImporter : IImporter
 {

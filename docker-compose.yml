@@ -1,0 +1,16 @@
+services:
+  
+  processing_db:
+    container_name: processing_db
+    image: postgres:latest
+    ports:
+      - "5436:5432"
+    restart: always
+    volumes:
+      - processing_db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "app"
+      POSTGRES_PASSWORD: "Ipl6#sWW"
+
+volumes:
+  processing_db_volume:

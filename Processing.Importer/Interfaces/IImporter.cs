@@ -1,7 +1,6 @@
-﻿using Processing.Core.Enums;
-using Processing.Core.Importer.Entities;
+﻿using Processing.Importer.Enums;
 
-namespace Processing.Core.Importer.Interfaces;
+namespace Processing.Importer.Interfaces;
 
 public interface IImporter
 {

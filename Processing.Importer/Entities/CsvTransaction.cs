@@ -1,6 +1,6 @@
-﻿using Processing.Core.Importer.Enums;
+﻿using Processing.Importer.Enums;
 
-namespace Processing.Core.Importer.Entities;
+namespace Processing.Importer.Entities;
 
 public class CsvTransaction
 {

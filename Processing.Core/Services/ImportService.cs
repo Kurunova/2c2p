@@ -1,19 +1,16 @@
-﻿using Processing.Core.Extensions;
-using Processing.Core.Importer.Entities;
-using Processing.Core.Importer.Interfaces;
-using Processing.Core.Importer.Services;
-using Processing.Core.Interfaces.Importers;
+﻿using Processing.Core.Interfaces;
+using Processing.Importer.Entities;
+using Processing.Importer.Interfaces;
+using Processing.Importer.Services;
 
-namespace Processing.Core.Services.Importers;
+namespace Processing.Core.Services;
 
 public class ImportService : IImportService
 {
 	public Task Import(string fileName, byte[] file)
 	{
-		var fileFormat = FileExtension.GetFileFormat(fileName);
-
 		IImporterFactory factory = new ImporterFactory(new List<IImporter>(){ new CsvImporter(), new XmlImporter() });
-		var importer = factory.Create(fileFormat);
+		var importer = factory.Create(fileName);
 		
 		var data = importer.Process(new ImporterRequest(){ File = file });
 		

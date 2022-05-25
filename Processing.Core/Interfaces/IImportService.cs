@@ -1,4 +1,4 @@
-﻿namespace Processing.Core.Interfaces.Importers;
+﻿namespace Processing.Core.Interfaces;
 
 public interface IImportService
 {

@@ -52,6 +52,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Processing.Core\Processing.Core.csproj" />
+      <ProjectReference Include="..\Processing.Importer\Processing.Importer.csproj" />
     </ItemGroup>
 
 </Project>

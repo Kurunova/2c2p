@@ -1,4 +1,4 @@
-﻿namespace Processing.Core.Importer.Enums;
+﻿namespace Processing.Importer.Enums;
 
 public enum XmlImporterResponseStatus
 {

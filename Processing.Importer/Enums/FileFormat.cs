@@ -1,4 +1,4 @@
-﻿namespace Processing.Core.Enums;
+﻿namespace Processing.Importer.Enums;
 
 public enum FileFormat
 {

@@ -1,6 +1,6 @@
-﻿using Processing.Core.Enums;
+﻿using Processing.Importer.Enums;
 
-namespace Processing.Core.Extensions;
+namespace Processing.Importer.Extensions;
 
 public static class FileExtension
 {

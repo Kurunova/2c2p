@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using FluentAssertions;
 using NUnit.Framework;
-using Processing.Core.Interfaces.Importers;
-using Processing.Core.Services.Importers;
+using Processing.Core.Interfaces;
+using Processing.Core.Services;
 
 namespace Processing.UnitTests;
 

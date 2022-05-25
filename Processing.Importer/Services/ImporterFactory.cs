@@ -1,7 +1,8 @@
-﻿using Processing.Core.Enums;
-using Processing.Core.Importer.Interfaces;
+﻿using Processing.Importer.Enums;
+using Processing.Importer.Extensions;
+using Processing.Importer.Interfaces;
 
-namespace Processing.Core.Importer.Services;
+namespace Processing.Importer.Services;
 
 public class ImporterFactory : IImporterFactory
 {
@@ -12,8 +13,9 @@ public class ImporterFactory : IImporterFactory
 		_importers = importers;
 	}
 
-	public IImporter Create(FileFormat fileFormat)
+	public IImporter Create(string fileName)
 	{
+		var fileFormat = FileExtension.GetFileFormat(fileName);
 		var importer = _importers.Single(x => x.FileFormat == fileFormat);
 		return importer;
 	}

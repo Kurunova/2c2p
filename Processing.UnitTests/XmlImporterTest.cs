@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using Processing.Core.Importer.Entities;
-using Processing.Core.Importer.Enums;
-using Processing.Core.Importer.Interfaces;
-using Processing.Core.Importer.Services;
+using Processing.Importer.Entities;
+using Processing.Importer.Enums;
+using Processing.Importer.Interfaces;
+using Processing.Importer.Services;
 
 namespace Processing.UnitTests;
 

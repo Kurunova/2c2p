@@ -1,4 +1,6 @@
-﻿namespace Processing.Core.Importer.Entities;
+﻿using Processing.Importer.Interfaces;
+
+namespace Processing.Importer.Entities;
 
 public class ImporterRequest : IImporterRequest
 {
