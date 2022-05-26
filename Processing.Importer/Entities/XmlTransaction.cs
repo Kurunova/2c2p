@@ -3,7 +3,7 @@ using Processing.Importer.Interfaces;
 
 namespace Processing.Importer.Entities;
 
-public class XmlTransaction : IImporterResponse
+public class XmlTransaction : ITransaction
 {
 	public string TransactionId { get; set; }
 	

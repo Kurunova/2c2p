@@ -30,13 +30,13 @@ public class CsvImporter : IImporter
 				TransactionId = row[0],
 				Amount = decimal.Parse(row[1].Replace(",", ""), CultureInfo.InvariantCulture),
 				CurrencyCode = row[2],
-				TransactionDate = DateTime.Parse(row[3]),
+				TransactionDate = DateTime.SpecifyKind(DateTime.Parse(row[3]), DateTimeKind.Utc),
 				Status = (CsvImporterResponseStatus)Enum.Parse(typeof(CsvImporterResponseStatus), row[4])
 			});
 		} 
 
 		parser.Close();
 
-		return new ImporterResponse<CsvTransaction> { Transactions = transactions };
+		return new ImporterResponse { Transactions = transactions };
 	}
 }

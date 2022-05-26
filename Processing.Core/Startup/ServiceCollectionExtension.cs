@@ -11,7 +11,8 @@ public static class ServiceCollectionExtension
 	{
 		serviceCollection.AddImporter();
 		serviceCollection.AddTransient<IImportService, ImportService>();
-
+		serviceCollection.AddAutoMapper(typeof(ServiceCollectionExtension));
+		
 		return serviceCollection;
 	}
 }

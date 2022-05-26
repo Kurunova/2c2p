@@ -1,8 +1,9 @@
 ﻿using Processing.Importer.Enums;
+using Processing.Importer.Interfaces;
 
 namespace Processing.Importer.Entities;
 
-public class CsvTransaction
+public class CsvTransaction : ITransaction
 {
 	public string TransactionId { get; set; }
 	

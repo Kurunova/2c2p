@@ -22,10 +22,10 @@ public class XmlImporter : IImporter
 			TransactionId = x.id,
 			Amount = decimal.Parse(x.PaymentDetails[0].Amount, CultureInfo.InvariantCulture),
 			CurrencyCode = x.PaymentDetails[0].CurrencyCode,
-			TransactionDate = DateTime.Parse(x.TransactionDate),
+			TransactionDate = DateTime.SpecifyKind(DateTime.Parse(x.TransactionDate), DateTimeKind.Utc),
 			Status = (XmlImporterResponseStatus)Enum.Parse(typeof(XmlImporterResponseStatus), x.Status)
 		});
 
-		return new ImporterResponse<XmlTransaction> { Transactions = transactions };
+		return new ImporterResponse { Transactions = transactions };
 	}
 }

@@ -16,6 +16,8 @@ builder.Services.AddControllersWithViews(options =>
 builder.Services.AddDataLayer(builder.Configuration);
 builder.Services.AddCore();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 

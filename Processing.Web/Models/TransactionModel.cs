@@ -10,5 +10,5 @@ public class TransactionModel
 	
 	public DateTime TransactionDate { get; set; }
 	
-	public int Status { get; set; }
+	public TransactionStatus Status { get; set; }
 }

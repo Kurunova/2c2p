@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Processing.Core.Entities;
 using Processing.Core.Interfaces;
 using Processing.Web.Models;
@@ -9,23 +10,27 @@ public class HomeController : Controller
 {
 	private readonly IImportService _importService;
 	private readonly IRepository<Transaction> _repository;
+	private readonly IMapper _mapper;
+	
 	private int _maxFileSizeMb = 1;
 	
-	public HomeController(IImportService importService, IRepository<Transaction> repository)
+	public HomeController(
+		IImportService importService, 
+		IRepository<Transaction> repository, 
+		IMapper mapper)
 	{
 		_importService = importService;
 		_repository = repository;
+		_mapper = mapper;
 	}
 
-	public ViewResult Index()
+	[HttpGet]
+	public ViewResult Index() 
 	{
-		var stubModel = new List<TransactionModel>()
-		{
-		};
+		var transactions = _repository.GetAll().ToList();
+		var model = _mapper.Map<List<TransactionModel>>(transactions);
 		
-		//var transactions = _repository.Find();
-		
-		return View(stubModel);
+		return View(model);
 	}
 	
 	[HttpGet]

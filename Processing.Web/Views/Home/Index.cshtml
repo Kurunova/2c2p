@@ -7,10 +7,8 @@
     <table class="tbl">
         <tr>
             <th>Id</th>
-            <th>Amount</th>
-            <th>Currency code</th>
+            <th>Payment</th>
             <th>Status</th>
-            <th>Transaction date</th>
         </tr>
         @if (Model.Any())
         {
@@ -26,7 +24,7 @@
         else
         {
             <tr>
-                <td colspan="5">No data</td>
+                <td colspan="3">No data</td>
             </tr>
         }
     </table>

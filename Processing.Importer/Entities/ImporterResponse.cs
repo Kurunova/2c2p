@@ -2,8 +2,7 @@
 
 namespace Processing.Importer.Entities;
 
-public class ImporterResponse<TTransaction> : IImporterResponse
-	where TTransaction : class
+public class ImporterResponse : IImporterResponse
 {
-	public IEnumerable<TTransaction> Transactions { get; set; }
+	public IEnumerable<ITransaction> Transactions { get; set; }
 }

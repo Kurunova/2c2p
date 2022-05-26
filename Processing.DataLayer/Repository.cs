@@ -17,6 +17,8 @@ namespace Processing.DataLayer
             _dbSet = dbContext?.Set<TEntity>() ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
+        public IQueryable<TEntity> GetAll() => _dbSet;
+
         public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
             => _dbSet.Where(predicate);
 

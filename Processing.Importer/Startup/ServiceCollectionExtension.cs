@@ -8,6 +8,7 @@ public static class ServiceCollectionExtension
 {
 	public static IServiceCollection AddImporter(this IServiceCollection serviceCollection)
 	{
+		serviceCollection.AddTransient<IImporterFactory, ImporterFactory>();
 		serviceCollection.AddTransient<IImporter, CsvImporter>();
 		serviceCollection.AddTransient<IImporter, XmlImporter>();
 

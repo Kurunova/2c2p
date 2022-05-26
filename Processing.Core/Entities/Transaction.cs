@@ -1,4 +1,6 @@
-﻿namespace Processing.Core.Entities;
+﻿using Processing.Core.Enums;
+
+namespace Processing.Core.Entities;
 
 public class Transaction : IEntity
 {
@@ -12,5 +14,5 @@ public class Transaction : IEntity
 	
 	public DateTime TransactionDate { get; set; }
 	
-	public int Status { get; set; }
+	public TransactionStatus Status { get; set; }
 }
