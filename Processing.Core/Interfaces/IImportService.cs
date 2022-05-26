@@ -2,5 +2,5 @@
 
 public interface IImportService
 {
-	Task Import(string fileName, byte[] file);
+	void Import(string fileName, byte[] file);
 }

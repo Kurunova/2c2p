@@ -22,7 +22,7 @@ public class ImportService : IImportService
 		_importerFactory = importerFactory;
 	}
 
-	public Task Import(string fileName, byte[] file)
+	public void Import(string fileName, byte[] file)
 	{
 		if (string.IsNullOrWhiteSpace(fileName))
 			throw new ArgumentException($"Don't set {nameof(fileName)}");
@@ -37,7 +37,5 @@ public class ImportService : IImportService
 		var transactions = _mapper.Map<List<Transaction>>(data.Transactions);
 		
 		_repository.Add(transactions);
-		
-		return Task.CompletedTask;
 	}
 }
