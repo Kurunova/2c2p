@@ -12,13 +12,19 @@ namespace Processing.Web.Filters
 		public override void OnException(ExceptionContext context)
 		{
 			context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+			var message = context.Exception switch
+			{
+				NotSupportedException => "Unknown format",
+				_ => context.Exception.Message
+			};
 			
 			string action = context.RouteData.Values["action"].ToString();
 		
 			var result = new ViewResult { ViewName = action };
 			var modelMetadata = new EmptyModelMetadataProvider();
 			result.ViewData = new ViewDataDictionary(modelMetadata, context.ModelState);
-			result.ViewData.Add("Message", context.Exception.Message);
+			result.ViewData.Add("Message", message);
 			context.Result = result;
 			context.ExceptionHandled = true;
 		}
