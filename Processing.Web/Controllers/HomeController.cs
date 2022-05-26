@@ -36,7 +36,7 @@ public class HomeController : Controller
 		
 		return View(model);
 	}
-	
+
 	[HttpGet]
 	public IActionResult Upload()
 	{

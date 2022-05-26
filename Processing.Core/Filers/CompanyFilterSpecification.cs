@@ -10,11 +10,11 @@ namespace Processing.Core.Filers
         public Expression<Func<Transaction, bool>> GetExpression(TransactionSearchRequestData filterData)
         {
             var condition = ExpressionExtensions.Blank<Transaction>();
-
-            condition.AndIf(filterData.CurrencyCode != null, entity => filterData.CurrencyCode == entity.CurrencyCode);
-            condition.AndIf(filterData.From.HasValue, entity => entity.TransactionDate >= filterData.From);
-            condition.AndIf(filterData.To.HasValue, entity => filterData.To >= entity.TransactionDate);
-            condition.AndIf(filterData.Status.HasValue, entity => filterData.Status == entity.Status);
+            
+            condition = condition.AndIf(filterData.CurrencyCode != null, entity => filterData.CurrencyCode == entity.CurrencyCode);
+            condition = condition.AndIf(filterData.From.HasValue, entity => entity.TransactionDate >= filterData.From);
+            condition = condition.AndIf(filterData.To.HasValue, entity => filterData.To >= entity.TransactionDate);
+            condition = condition.AndIf(filterData.Status.HasValue, entity => filterData.Status == entity.Status);
 
             return condition;
         }

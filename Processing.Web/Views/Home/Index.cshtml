@@ -3,6 +3,20 @@
     ViewData["Title"] = "Transactions Page";
 }
 
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { }))
+{
+    <div>
+        Currency <input name="CurrencyCode" type="text"/>
+        From <input name="From" type="date"/>
+        To <input name="To" type="date"/>
+        Status <input name="Status" type="text"/> 
+        <br/><br/>
+        <input type="submit" />
+    </div>
+}
+<br/>
+<br/>
 <div class="text-center">
     <table class="tbl">
         <tr>
