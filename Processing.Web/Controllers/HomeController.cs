@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Processing.Core.Entities;
+using Processing.Core.Filers;
 using Processing.Core.Interfaces;
 using Processing.Web.Models;
 
@@ -25,9 +26,12 @@ public class HomeController : Controller
 	}
 
 	[HttpGet]
-	public ViewResult Index() 
+	public ViewResult Index([FromQuery] TransactionRequest transactionRequest)
 	{
-		var transactions = _repository.GetAll().ToList();
+		var requestData = _mapper.Map<TransactionSearchRequestData>(transactionRequest);
+	
+		var transactions = _repository.Find<TransactionFilterSpecification, TransactionSearchRequestData>(requestData).ToList();
+		
 		var model = _mapper.Map<List<TransactionModel>>(transactions);
 		
 		return View(model);

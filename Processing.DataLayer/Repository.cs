@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Processing.Core.Entities;
 using Processing.Core.Interfaces;
+using Processing.Core.Interfaces.Filters;
 
 namespace Processing.DataLayer
 {
@@ -17,8 +18,17 @@ namespace Processing.DataLayer
             _dbSet = dbContext?.Set<TEntity>() ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public IQueryable<TEntity> GetAll() => _dbSet;
+        public IQueryable<TEntity> Find<TFilterSpecification, TRequestData>(TRequestData requestData)
+            where TFilterSpecification : IFilterSpecification<TRequestData, TEntity>, new()
+            where TRequestData : class, IRequestData
+        {
+            var filterSpecification = new TFilterSpecification();
+            var expression = filterSpecification.GetExpression(requestData);
 
+            var entities = _dbSet.Where(expression);
+            return entities;
+        }
+        
         public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
             => _dbSet.Where(predicate);
 
