@@ -1,12 +1,10 @@
 ﻿using System.Net;
-using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Processing.Web.Models;
 
 namespace Processing.Web.Filters;
 
-public class ValidateModelStateAttribute : ActionFilterAttribute
+public class ValidateModelStateFilter : ActionFilterAttribute
 {
 	public override void OnActionExecuted(ActionExecutedContext context)
 	{

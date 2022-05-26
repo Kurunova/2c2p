@@ -54,20 +54,12 @@ public class HomeController : Controller
 			return View();
 		}
 
-		var message = "File uploaded successfully";
-		try
-		{
-			using var ms = new MemoryStream();
-			file.CopyTo(ms);
-			var fileBytes = ms.ToArray();
-			_importService.Import(file.FileName, fileBytes);
-		}
-		catch (Exception e)
-		{
-			message = e.Message;
-		}
+		using var ms = new MemoryStream();
+		file.CopyTo(ms);
+		var fileBytes = ms.ToArray();
+		_importService.Import(file.FileName, fileBytes);
 		
-		ViewData["Message"] = message;
+		ViewData["Message"] = "File uploaded successfully";
 		return View();
 	}
 }

@@ -10,7 +10,8 @@ builder.Configuration.AddJsonFile($"appsettings.{builder.Environment.Environment
 // Add services to the container.
 builder.Services.AddControllersWithViews(options =>
 {
-	options.Filters.Add(typeof(ValidateModelStateAttribute));
+	options.Filters.Add(typeof(ExceptionFilter));
+	options.Filters.Add(typeof(ValidateModelStateFilter));
 });
 
 builder.Services.AddDataLayer(builder.Configuration);
