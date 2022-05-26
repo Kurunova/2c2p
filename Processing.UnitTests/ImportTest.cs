@@ -1,14 +1,30 @@
 using System;
 using System.IO;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using NUnit.Framework;
+using Processing.Core.Entities;
 using Processing.Core.Interfaces;
-using Processing.Core.Services;
+using Processing.Core.Startup;
 
 namespace Processing.UnitTests;
 
 public class ImportTest : BaseTest
 {
+	public ServiceProvider GetServiceProvider()
+	{
+		var serviceCollection = new ServiceCollection();
+		serviceCollection.AddAutoMapper(typeof(ServiceCollectionExtension));
+
+		var repositoryMock = new Mock<IRepository<Transaction>>();
+		serviceCollection.AddSingleton(repositoryMock.Object);
+		serviceCollection.AddCore();
+		
+		var serviceProvider = serviceCollection.BuildServiceProvider();
+		return serviceProvider;
+	}
+	
 	[TestCase("example.csv")]
 	[TestCase("example.xml")]
 	public void Import_Imported(string fileName)
@@ -16,7 +32,9 @@ public class ImportTest : BaseTest
 		// Arrange
 		var path = Path.Combine(DirectoryName, fileName);
 		var file = File.ReadAllBytes(path);
-		IImportService importService = new ImportService();
+
+		var serviceProvider = GetServiceProvider();
+		IImportService importService = serviceProvider.GetRequiredService<IImportService>();
 		
 		// Act
 		Action importAction = () => importService.Import(fileName, file);
@@ -31,7 +49,9 @@ public class ImportTest : BaseTest
 		// Arrange
 		var path = Path.Combine(DirectoryName, fileName);
 		var file = File.ReadAllBytes(path);
-		IImportService importService = new ImportService();
+
+		var serviceProvider = GetServiceProvider();
+		IImportService importService = serviceProvider.GetRequiredService<IImportService>();
 		
 		// Act
 		Action importAction = () => importService.Import(fileName, file);
@@ -53,7 +73,9 @@ public class ImportTest : BaseTest
 		// Arrange
 		var path = Path.Combine(DirectoryName, fileName);
 		var file = File.ReadAllBytes(path);
-		IImportService importService = new ImportService();
+
+		var serviceProvider = GetServiceProvider();
+		IImportService importService = serviceProvider.GetRequiredService<IImportService>();
 		
 		// Act
 		Action importAction = () => importService.Import(fileName, file);

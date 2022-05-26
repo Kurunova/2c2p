@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
@@ -24,20 +25,20 @@ public class CsvImporterTest : BaseTest
 		var result = importService.Process(new ImporterRequest { File = file });
 		
 		// Assert
-		result.GetType().Should().Be(typeof(ImporterResponse<CsvTransaction>));
+		result.Transactions.GetType().Should().Be(typeof(List<CsvTransaction>));
 		
-		var importerResponse = result as ImporterResponse<CsvTransaction>;
+		var transactions = result.Transactions as List<CsvTransaction>;
 		
-		importerResponse.Transactions.ToList()[0].TransactionId.Should().Be("Invoice0000001");
-		importerResponse.Transactions.ToList()[0].Amount.Should().Be(1000);
-		importerResponse.Transactions.ToList()[0].CurrencyCode.Should().Be("USD");
-		importerResponse.Transactions.ToList()[0].TransactionDate.Should().Be(new DateTime(2019, 02, 20, 12, 33, 16));
-		importerResponse.Transactions.ToList()[0].Status.Should().Be(CsvImporterResponseStatus.Approved);
+		transactions.ToList()[0].TransactionId.Should().Be("Invoice0000001");
+		transactions.ToList()[0].Amount.Should().Be(1000);
+		transactions.ToList()[0].CurrencyCode.Should().Be("USD");
+		transactions.ToList()[0].TransactionDate.Should().Be(new DateTime(2019, 02, 20, 12, 33, 16));
+		transactions.ToList()[0].Status.Should().Be(CsvImporterResponseStatus.Approved);
 		
-		importerResponse.Transactions.ToList()[1].TransactionId.Should().Be("Invoice0000002");
-		importerResponse.Transactions.ToList()[1].Amount.Should().Be(300);
-		importerResponse.Transactions.ToList()[1].CurrencyCode.Should().Be("USD");
-		importerResponse.Transactions.ToList()[1].TransactionDate.Should().Be(new DateTime(2019, 02, 21, 02, 04, 59));
-		importerResponse.Transactions.ToList()[1].Status.Should().Be(CsvImporterResponseStatus.Failed);
+		transactions.ToList()[1].TransactionId.Should().Be("Invoice0000002");
+		transactions.ToList()[1].Amount.Should().Be(300);
+		transactions.ToList()[1].CurrencyCode.Should().Be("USD");
+		transactions.ToList()[1].TransactionDate.Should().Be(new DateTime(2019, 02, 21, 02, 04, 59));
+		transactions.ToList()[1].Status.Should().Be(CsvImporterResponseStatus.Failed);
 	}
 }

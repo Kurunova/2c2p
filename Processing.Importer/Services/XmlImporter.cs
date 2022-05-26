@@ -24,7 +24,7 @@ public class XmlImporter : IImporter
 			CurrencyCode = x.PaymentDetails[0].CurrencyCode,
 			TransactionDate = DateTime.SpecifyKind(DateTime.Parse(x.TransactionDate), DateTimeKind.Utc),
 			Status = (XmlImporterResponseStatus)Enum.Parse(typeof(XmlImporterResponseStatus), x.Status)
-		});
+		}).ToList();
 
 		return new ImporterResponse { Transactions = transactions };
 	}

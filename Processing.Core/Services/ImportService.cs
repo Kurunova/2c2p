@@ -24,6 +24,12 @@ public class ImportService : IImportService
 
 	public Task Import(string fileName, byte[] file)
 	{
+		if (string.IsNullOrWhiteSpace(fileName))
+			throw new ArgumentException($"Don't set {nameof(fileName)}");
+		
+		if (file == null || file.Length == 0)
+			throw new ArgumentException($"Don't set {nameof(file)}");
+
 		var importer = _importerFactory.Create(fileName);
 		
 		var data = importer.Process(new ImporterRequest(){ File = file });

@@ -11,7 +11,9 @@ public class CommonMapping : Profile
 {
 	public CommonMapping()
 	{
-		CreateMap<CsvTransaction, Transaction>();
+		CreateMap<CsvTransaction, Transaction>()
+			.ForMember(d => d.Id, x => x.Ignore());
+		
 		CreateMap<CsvImporterResponseStatus, TransactionStatus>()
 			.ConvertUsingEnumMapping(opt => opt
 				.MapValue(CsvImporterResponseStatus.Approved, TransactionStatus.A)
@@ -20,7 +22,9 @@ public class CommonMapping : Profile
 			)
 			.ReverseMap();
 		
-		CreateMap<XmlTransaction, Transaction>();
+		CreateMap<XmlTransaction, Transaction>()
+			.ForMember(d => d.Id, x => x.Ignore());
+		
 		CreateMap<XmlImporterResponseStatus, TransactionStatus>()
 			.ConvertUsingEnumMapping(opt => opt
 				.MapValue(XmlImporterResponseStatus.Approved, TransactionStatus.A)
